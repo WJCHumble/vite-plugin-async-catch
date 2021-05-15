@@ -1,0 +1,48 @@
+{
+  "name": "vite-plugin-async-catch",
+  "description": "A vite plugin that can auto inject try catch code for async function",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "wuliu <wujingchang5@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WJCHumble/vite-plugin-async-catch"
+  },
+  "homepage": "https://github.com/WJCHumble/vite-plugin-async-catch",
+  "bugs": "https://github.com/WJCHumble/vite-plugin-async-catch/issues",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "example:dev": "npm -C example run dev",
+    "example:build": "npm -C example run build",
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "prepublishOnly": "npm run build",
+    "release": "npx git-ensure -a && npx bumpp --commit --tag --push"
+  },
+  "keywords": [
+    "vite-plugin",
+    "async function",
+    "try catch"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/parser": "^7.5.0",
+    "@babel/traverse": "^7.5.0",
+    "@babel/types": "^7.5.0",
+    "@types/babel__traverse": "^7.11.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.4.3",
+    "@types/babel__core": "^7.1.14",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "eslint": "^7.20.0",
+    "tsup": "^4.2.0",
+    "typescript": "^4.1.5",
+    "vite": "^2.3.2"
+  }
+}
