@@ -8,13 +8,8 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'App',
   async created() {
-    await this.asyncFn()
-  },
-  method: {
-    asyncFn() {
-      return Promise.reject('Throw error')
-    },
-  },
+    await Promise.reject('Throw error.')
+  }
 })
 </script>
 

@@ -1,0 +1,16 @@
+{
+  "name": "vue2",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.0.0-beta.65",
+    "vite-plugin-vue2": "^1.5.1"
+  },
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}

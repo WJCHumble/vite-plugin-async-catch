@@ -5,12 +5,12 @@ import t, { Node, Statement, BlockStatement } from '@babel/types'
 import { transformFromAstSync } from '@babel/core'
 import { Plugin } from 'vite'
 import { Options } from './types'
+import { isNeedResolveFile } from './utils'
 
 const DEFAUTL_OPTIONS: Options = {
-  catchCode: identifier => `console.error(${identifier})`,
+  catchCode: 'console.error(e)',
   identifier: 'e',
   finnallyCode: null,
-  include: [".ts", ".tsx", ".js", ".vue"]
 }
 
 function isAsyncFuncNode(node: Node): boolean {
@@ -37,17 +37,17 @@ export default function vitePluginAsyncCatch(options: Options = {} as Options): 
     ...DEFAUTL_OPTIONS,
     ...options,
   }
-  // filter no need file
-  if (options.) {}
   // get catch code
-  const catchCode: string = options.catchCode(options.identifier)
-
-  const catchStatement: Array<Statement> = parse(catchCode).program.body
+  const catchStatement: Array<Statement> = parse(options.catchCode).program.body
   const finallyStatement: Array<Statement> = options.finnallyCode && parse(options.finnallyCode).program.body
 
   return {
     name: 'vite-plugin-async-catch',
     transform(code: any, id: string) {
+      // filter no need resolve file
+      if (!isNeedResolveFile(id))
+        return code
+
       const ast = parse(code, {
         sourceType: 'module',
         plugins: ['dynamicImport'],
@@ -63,7 +63,7 @@ export default function vitePluginAsyncCatch(options: Options = {} as Options): 
           const tryCatchAst: Node = t.tryStatement(
             blockParentPath.node as BlockStatement,
             t.catchClause(
-              t.identifier(options.identifier),
+              t.identifier(options.identifier as string),
               t.blockStatement(catchStatement),
             ),
             finallyStatement && t.blockStatement(finallyStatement),
