@@ -7,7 +7,7 @@ Support use in:
 - vue3
 - vue2
 - react
-- vannila js or ts
+- vannila js
 
 ## Usage
 
