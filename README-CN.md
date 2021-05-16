@@ -1,25 +1,25 @@
 ## vite-plugin-async-catch
 
-A vite plugin that can auto inject try catch code for async function. Inspried by [async-catch-loader](https://github.com/yeyan1996/async-catch-loader).
+一个可以自动为 `async` 函数注入 `try catch` 代码的 Vite 插件。Inspried by [async-catch-loader](https://github.com/yeyan1996/async-catch-loader).
 
-Support use in:
+支持在以下类型的项目中使用:
 
 - vue3
 - vue2
 - react
 - vannila js
 
-## Usage
+## 使用
 
-Install:
+安装:
 
 ```bash
 npm i vite-plugin-async-catch -D
 ```
 
-Add the plugin to the `vite.config.ts`(or `vite.config.js`).
+添加插件到 `vite.config.ts`(或者 `vite.config.js`)。
 
-In Vue3 project:
+在 Vue3 项目中:
 
 ```typescript
 import { defineConfig } from "vite";
@@ -36,7 +36,7 @@ export default defineConfig({
 });
 ```
 
-In Vue2 project:
+在 Vue2 项目中:
 
 ```javascript
 import { defineConfig } from "vite";
@@ -53,7 +53,7 @@ export default defineConfig({
 });
 ```
 
-In React project:
+在 React 项目中:
 
 ```typescript
 import reactRefresh from "@vitejs/plugin-react-refresh";
@@ -72,7 +72,7 @@ export default defineConfig({
 
 ## Options
 
-The `Options` type definition:
+`Options` 的类型定义:
 
 ```typescript
 interface Options {
@@ -82,10 +82,10 @@ interface Options {
 }
 ```
 
-The meaning of each paramter:
+其中，每个参数的意义:
 
-| name         | introduce                         | type   | default          |
-| ------------ | --------------------------------- | ------ | ---------------- |
-| catchCode    | use in the catch block            | string | console.error(e) |
-| identifier   | the error argument of catch block | string | e                |
-| finnallyCode | use in the finally block          | string | null             |
+| 名称         | 介绍                    | 类型   | 默认值           |
+| ------------ | ----------------------- | ------ | ---------------- |
+| catchCode    | 在 catch 代码块中使用   | string | console.error(e) |
+| identifier   | catch 代码块的错误参数  | string | e                |
+| finnallyCode | 在 finally 代码块中使用 | string | null             |
