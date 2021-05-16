@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-async-catch",
   "description": "A vite plugin that can auto inject try catch code for async function",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -30,11 +30,11 @@
     "@babel/parser": "^7.5.0",
     "@babel/traverse": "^7.5.0",
     "@babel/types": "^7.5.0",
+    "@types/babel__core": "^7.1.14",
     "@types/babel__traverse": "^7.11.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.4.3",
-    "@types/babel__core": "^7.1.14",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "eslint": "^7.20.0",
     "tsup": "^4.2.0",
