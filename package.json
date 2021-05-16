@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-async-catch",
   "description": "A vite plugin that can auto inject try catch code for async function",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -18,11 +18,7 @@
   ],
   "scripts": {
     "dev": "npm run build -- --watch",
-    "example:dev": "npm -C example run dev",
-    "example:build": "npm -C example run build",
-    "build": "tsup src/index.ts --dts --format cjs,esm",
-    "prepublishOnly": "npm run build",
-    "release": "npx git-ensure -a && npx bumpp --commit --tag --push"
+    "build": "tsup src/index.ts --dts --format cjs,esm"
   },
   "keywords": [
     "vite-plugin",
