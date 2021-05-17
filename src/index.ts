@@ -1,7 +1,23 @@
 import { parse } from '@babel/parser'
 import traverse from '@babel/traverse'
 import { NodePath } from 'babel__traverse'
-import t, { Node, Statement, BlockStatement } from '@babel/types'
+import {
+  Node,
+  Statement,
+  BlockStatement,
+  isFunctionDeclaration,
+  isArrowFunctionExpression,
+  isFunctionExpression,
+  isObjectMethod,
+  isClassMethod,
+  AwaitExpression,
+  isTryStatement,
+  tryStatement,
+  isBlockStatement,
+  catchClause,
+  identifier,
+  blockStatement,
+} from '@babel/types'
 import { transformFromAstSync } from '@babel/core'
 import { Plugin } from 'vite'
 import { Options } from './types'
@@ -14,19 +30,19 @@ const DEFAUTL_OPTIONS: Options = {
 }
 
 function isAsyncFuncNode(node: Node): boolean {
-  return t.isFunctionDeclaration(node, {
+  return isFunctionDeclaration(node, {
     async: true,
   })
-  || t.isArrowFunctionExpression(node, {
+  || isArrowFunctionExpression(node, {
     async: true,
   })
-  || t.isFunctionExpression(node, {
+  || isFunctionExpression(node, {
     async: true,
   })
-  || t.isObjectMethod(node, {
+  || isObjectMethod(node, {
     async: true,
   })
-  || t.isClassMethod(node, {
+  || isClassMethod(node, {
     async: true,
   })
 }
@@ -54,19 +70,19 @@ export default function vitePluginAsyncCatch(options: Options = {} as Options): 
       })
       // inject try catch code
       traverse(ast, {
-        AwaitExpression(path: NodePath<t.AwaitExpression>) {
+        AwaitExpression(path: NodePath<AwaitExpression>) {
           // return already have try catch code
-          if (path.findParent((path: NodePath) => t.isTryStatement(path.node))) return
+          if (path.findParent((path: NodePath) => isTryStatement(path.node))) return
           // find the NodePath of outermost
-          const blockParentPath: NodePath = path.findParent((path: NodePath) => t.isBlockStatement(path.node) && isAsyncFuncNode(path.parentPath.node)) as NodePath
+          const blockParentPath: NodePath = path.findParent((path: NodePath) => isBlockStatement(path.node) && isAsyncFuncNode(path.parentPath.node)) as NodePath
           // create a try catch AST
-          const tryCatchAst: Node = t.tryStatement(
+          const tryCatchAst: Node = tryStatement(
             blockParentPath.node as BlockStatement,
-            t.catchClause(
-              t.identifier(options.identifier as string),
-              t.blockStatement(catchStatement),
+            catchClause(
+              identifier(options.identifier as string),
+              blockStatement(catchStatement),
             ),
-            finallyStatement && t.blockStatement(finallyStatement),
+            finallyStatement && blockStatement(finallyStatement),
           )
           // replace the async function's body
           blockParentPath.replaceWithMultiple([tryCatchAst])
