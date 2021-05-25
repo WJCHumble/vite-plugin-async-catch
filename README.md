@@ -1,6 +1,8 @@
 ## vite-plugin-async-catch
 
-![GitHub](https://img.shields.io/npm/v/vite-plugin-async-catch)
+<a href="https://www.npmjs.com/package/vite-plugin-async-catch" target="_blank">
+<img src="https://img.shields.io/npm/v/vite-plugin-async-catch"/>
+</a>
 
 [English](https://github.com/WJCHumble/vite-plugin-async-catch/blob/main/README.md) | [中文](https://github.com/WJCHumble/vite-plugin-async-catch/blob/main/README-CN.md)
 
