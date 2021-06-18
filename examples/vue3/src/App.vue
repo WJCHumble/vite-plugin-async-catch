@@ -4,12 +4,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
 export default defineComponent({
   name: 'App',
   async created() {
     await Promise.reject('Throw error.')
-  }
+  },
 })
 </script>
 
