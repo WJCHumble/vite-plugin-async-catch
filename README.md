@@ -4,10 +4,6 @@
 <img src="https://img.shields.io/npm/v/vite-plugin-async-catch"/>
 </a>
 
-<a href="https://www.npmjs.com/package/vite-plugin-async-catch" target="_blank">
-<img src="https://img.shields.io/npm/dw/vite-plugin-async-catch"/>
-</a>
-
 [English](https://github.com/WJCHumble/vite-plugin-async-catch/blob/main/README.md) | [中文](https://github.com/WJCHumble/vite-plugin-async-catch/blob/main/README-CN.md)
 
 A vite plugin that can auto inject try catch code for async function. Inspried by [async-catch-loader](https://github.com/yeyan1996/async-catch-loader).
