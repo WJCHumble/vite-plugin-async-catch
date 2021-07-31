@@ -19,7 +19,9 @@
   "scripts": {
     "dev": "npm run build -- --watch",
     "build": "tsup src/index.ts --dts --format cjs,esm",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "test:update": "jest -u"
   },
   "keywords": [
     "vite-plugin",
@@ -36,8 +38,11 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.4.3",
+    "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "eslint": "^7.20.0",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.4",
     "tsup": "^4.2.0",
     "typescript": "^4.1.5",
     "vite": "^2.3.2"
