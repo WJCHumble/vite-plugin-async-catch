@@ -30,7 +30,7 @@ In Vue3 project:
 ```typescript
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import AsyncCatch from "../../src/index";
+import AsyncCatch from "vite-plugin-async-catch";
 
 export default defineConfig({
   plugins: [
@@ -47,7 +47,7 @@ In Vue2 project:
 ```javascript
 import { defineConfig } from "vite";
 import { createVuePlugin } from "vite-plugin-vue2";
-import AsyncCatch from "../../src/index";
+import AsyncCatch from "vite-plugin-async-catch";
 
 export default defineConfig({
   plugins: [
@@ -64,7 +64,7 @@ In React project:
 ```typescript
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import { defineConfig } from "vite";
-import AsyncCatch from "../../src/index";
+import AsyncCatch from "vite-plugin-async-catch";
 
 export default defineConfig({
   plugins: [
